@@ -40,7 +40,7 @@
       image.className = "carousel-image";
       image.src = slide.src;
       image.alt = slide.alt;
-      image.title = "Zeladoria urbana";
+      image.title = "SmartCidadão";
       image.draggable = false;
       image.style.setProperty("--angle", `${index * (360 / slides.length)}deg`);
       carousel.append(image);
