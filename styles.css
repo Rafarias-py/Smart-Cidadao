@@ -35,8 +35,8 @@ a { color: inherit; }
   position: sticky;
   z-index: 5;
   top: 0;
-  border-bottom: 1px solid rgb(226 232 240 / 75%);
-  background: rgb(255 255 255 / 92%);
+  border-bottom: 1px solid rgb(255 255 255 / 22%);
+  background: var(--primary);
   backdrop-filter: blur(14px);
 }
 
@@ -52,7 +52,7 @@ a { color: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: var(--ink);
+  color: var(--white);
   font-size: 1.2rem;
   font-weight: 800;
   letter-spacing: -.04em;
@@ -78,7 +78,7 @@ a { color: inherit; }
 }
 
 .main-nav a {
-  color: var(--muted);
+  color: rgb(255 255 255 / 82%);
   font-size: .88rem;
   font-weight: 650;
   text-decoration: none;
@@ -88,7 +88,7 @@ a { color: inherit; }
 .main-nav a:hover,
 .main-nav a:focus-visible { color: var(--accent); }
 
-.main-nav a[aria-current="page"] { color: var(--primary); }
+.main-nav a[aria-current="page"] { color: var(--white); }
 
 main section { scroll-margin-top: 92px; }
 
