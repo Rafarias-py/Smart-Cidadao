@@ -522,3 +522,39 @@ a:focus-visible {
   cursor: pointer;
   color: #ffffff;
 }
+
+/* melhorando o fundo */
+
+/* Posicionamento fixo nas margens laterais */
+.fundo-urbano-lateral {
+  position: fixed;
+  top: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  color: #0284c7; /* Tom azul alinhado com o SmartCidadão */
+  opacity: 0.12;  /* Transparência sutil para não distrair */
+  pointer-events: none; /* Não interfere nos cliques da página */
+  z-index: 0;
+}
+
+.fundo-urbano-lateral.esquerda {
+  left: 20px;
+}
+
+.fundo-urbano-lateral.direita {
+  right: 20px;
+}
+
+/* Tamanho dos ícones */
+.fundo-urbano-lateral svg {
+  width: 90px;
+  height: 90px;
+}
+
+/* Ocultar em ecrãs pequenos (telemóveis) para não sobrepor o texto */
+@media (max-width: 1024px) {
+  .fundo-urbano-lateral {
+    display: none;
+  }
+}
