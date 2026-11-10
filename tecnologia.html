@@ -20,13 +20,27 @@
         </span>
         SmartCidadão
       </a>
-      <nav class="main-nav" aria-label="Navegação principal">
-        <a href="index.html">O Problema</a>
-        <a href="tecnologia.html" aria-current="page">Tecnologia</a>
-        <a href="objetivos.html">Objetivos</a>
-        <a href="publico.html">Público-alvo</a>
-        <a href="beneficios.html">Benefícios</a>
-      </nav>
+
+    <nav class="main-nav" aria-label="Navegação principal">
+      <!-- Barra de pesquisa -->
+      <form class="caixa-busca">
+        <input type="text" id="input-busca" placeholder="Buscar..." aria-label="Pesquisar">
+        <button type="submit" aria-label="Pesquisar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Links do menu -->
+      <a href="index.html" aria-current="page">O Problema</a>
+      <a href="tecnologia.html">Tecnologia</a>
+      <a href="objetivos.html">Objetivos</a>
+      <a href="publico.html">Público-alvo</a>
+      <a href="beneficios.html">Benefícios</a>
+    </nav>
+
     </div>
   </header>
 
@@ -135,5 +149,27 @@
       </div>
     </div>
   </footer>
+
+  <script>
+  document.querySelector('.caixa-busca').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const termo = document.getElementById('input-busca').value.toLowerCase().trim();
+    
+    if (termo.includes('problema') || termo.includes('inicio') || termo.includes('início')) {
+      window.location.href = 'index.html';
+    } else if (termo.includes('tecnologia')) {
+      window.location.href = 'tecnologia.html';
+    } else if (termo.includes('objetivo')) {
+      window.location.href = 'objetivos.html';
+    } else if (termo.includes('público') || termo.includes('publico')) {
+      window.location.href = 'publico.html';
+    } else if (termo.includes('benefício') || termo.includes('beneficio')) {
+      window.location.href = 'beneficios.html';
+    } else {
+      alert('Página não encontrada. Tente buscar por: Problema, Tecnologia, Objetivos, Público-alvo ou Benefícios.');
+    }
+  });
+</script>
+
 </body>
 </html>
