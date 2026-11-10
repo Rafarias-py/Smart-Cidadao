@@ -16,8 +16,8 @@
         alt: "Alagamento em área urbana"
       },
       {
-        src: "imagens/enchentes.jpg",
-        alt: "Enchente em rua da cidade"
+        src: "imagens/fiossoltos.jpg",
+        alt: "Fios soltos em área urbana"
       },
       {
         src: "imagens/Lixo, no centro.jpg",
