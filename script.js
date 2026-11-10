@@ -45,3 +45,6 @@
       image.style.setProperty("--angle", `${index * (360 / slides.length)}deg`);
       carousel.append(image);
     });
+
+// Deixando a barra de pesquisa funcional 
+

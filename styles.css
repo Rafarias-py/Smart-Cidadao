@@ -485,3 +485,40 @@ a:focus-visible {
 
   .carousel { animation: none; }
 }
+
+/* Garante alinhamento dos itens no menu */
+.menu-navegacao {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espaçamento entre os elementos */
+}
+
+/* Estilo do campo de pesquisa */
+
+.caixa-busca {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2); /* Fundo sutil transparente */
+  border-radius: 20px;
+  padding: 4px 10px;
+}
+
+.caixa-busca input {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 4px 8px;
+}
+
+.caixa-busca input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.caixa-busca button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+}
