@@ -53,7 +53,7 @@ Conteúdo Principal (<main>):
 
 Seção 1 — O Problema (#problema):
 
-Introdução textual com hierarquia de títulos (<h1> com destaque em <span>) e subtítulo categorizador (.eyebrow).
+Introdução textual com hierarquia de títulos ("h1" com destaque em <span>) e subtítulo categorizador (.eyebrow).
 
 Container do Carrossel (<div class="carousel-scene">): Região demarcada com role="region" e aria-label, contendo a trilha #carousel-track populada via JavaScript.
 
