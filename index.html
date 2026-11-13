@@ -36,7 +36,8 @@
 
       <!-- 3. Botão à direita -->
       <div class="header-action">
-        <a href="#solicitacao" class="btn-solicitacao">Faça sua Solicitação</a>
+        <button type="button" class="btn-solicitacao" id="open-request" aria-haspopup="dialog"
+          aria-controls="request-dialog">Faça sua Solicitação</button>
       </div>
     </div>
   </header>
@@ -164,6 +165,84 @@
     </section>
   </main>
 
+  <dialog class="request-dialog" id="request-dialog" aria-labelledby="request-title"
+    aria-describedby="request-notice">
+    <div class="request-dialog-header">
+      <div>
+        <span class="eyebrow">SmartCidadão</span>
+        <h2 id="request-title">Faça sua solicitação</h2>
+      </div>
+      <button class="request-close" type="button" aria-label="Fechar formulário" data-close-request>&times;</button>
+    </div>
+    <p class="request-notice" id="request-notice">Preencha os dados abaixo para relatar um problema na cidade.
+      <strong>Este formulário é uma demonstração: as informações não são enviadas nem armazenadas.</strong>
+    </p>
+
+    <form class="request-form" id="request-form">
+      <label class="form-field">
+        <span>Tipo do problema <span aria-hidden="true">*</span></span>
+        <select name="category" required>
+          <option value="" selected disabled>Selecione uma categoria</option>
+          <option>Buraco na via</option>
+          <option>Bueiro entupido</option>
+          <option>Iluminação pública</option>
+          <option>Lixo e entulho</option>
+          <option>Poda de árvore</option>
+          <option>Calçada danificada</option>
+          <option>Sinalização</option>
+          <option>Semáforo com defeito</option>
+          <option>Alagamento</option>
+          <option>Mato alto em terreno</option>
+          <option>Outro</option>
+        </select>
+      </label>
+
+      <label class="form-field">
+        <span>Descrição curta <span aria-hidden="true">*</span></span>
+        <textarea name="description" rows="3" maxlength="240" required
+          placeholder="Ex.: buraco grande na faixa da direita"></textarea>
+        <small>Conte em uma ou duas frases o que está acontecendo (até 240 caracteres).</small>
+      </label>
+
+      <label class="form-field">
+        <span>Endereço do chamado <span aria-hidden="true">*</span></span>
+        <input id="request-location" name="location" type="text" required
+          placeholder="Informe a rua e o número">
+        <small>Informe a rua e o número; o bairro será identificado a partir do endereço.</small>
+      </label>
+
+      <label class="form-field">
+        <span>Fotos do problema <span aria-hidden="true">*</span></span>
+        <input id="request-photos" name="photos" type="file" accept="image/*" multiple required>
+        <small>Envie de 1 a 4 imagens.</small>
+      </label>
+
+      <fieldset class="risk-field">
+        <legend>O problema oferece risco imediato de acidente? <span aria-hidden="true">*</span></legend>
+        <label><input type="radio" name="accidentRisk" value="Sim" required> Sim</label>
+        <label><input type="radio" name="accidentRisk" value="Não" required> Não</label>
+      </fieldset>
+
+      <div class="contact-fields">
+        <label class="form-field">
+          <span>Nome <span aria-hidden="true">*</span></span>
+          <input name="name" type="text" autocomplete="name" maxlength="100" required>
+        </label>
+        <label class="form-field">
+          <span>Idade <span aria-hidden="true">*</span></span>
+          <input name="age" type="number" min="1" max="120" inputmode="numeric" required>
+        </label>
+      </div>
+      <small class="privacy-note">Nome e idade são usados somente para identificar o solicitante.</small>
+
+      <p class="form-feedback" id="request-feedback" role="status" aria-live="polite"></p>
+      <div class="request-actions">
+        <button class="request-cancel" type="button" data-close-request>Cancelar</button>
+        <button class="request-submit" type="submit">Conferir preenchimento</button>
+      </div>
+    </form>
+  </dialog>
+
   <footer class="site-footer">
     <div class="container footer-container">
       <div class="footer-main">
@@ -250,7 +329,7 @@
   <script src="script.js" defer></script>
 
   <script>
-    document.querySelector('.caixa-busca').addEventListener('submit', function (e) {
+    document.querySelector('.caixa-busca')?.addEventListener('submit', function (e) {
       e.preventDefault();
       const termo = document.getElementById('input-busca').value.toLowerCase().trim();
 

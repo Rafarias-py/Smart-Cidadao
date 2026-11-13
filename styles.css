@@ -609,3 +609,176 @@ a:focus-visible {
   background: rgba(255, 255, 255, 0.15);
   transform: translateY(-1px);
 }
+
+.btn-solicitacao { cursor: pointer; font-family: inherit; }
+
+.request-dialog {
+  width: min(660px, calc(100% - 32px));
+  max-width: none;
+  max-height: min(90vh, 900px);
+  padding: clamp(22px, 5vw, 36px);
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.request-dialog::backdrop {
+  background: rgb(30 41 59 / 58%);
+  backdrop-filter: blur(4px);
+}
+
+.request-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.request-dialog-header .eyebrow { margin-bottom: 10px; }
+
+.request-dialog h2 {
+  margin-bottom: 0;
+  color: var(--ink);
+  font-size: clamp(1.7rem, 5vw, 2.3rem);
+}
+
+.request-close {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.request-notice {
+  margin: 18px 0 24px;
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.request-notice strong { color: var(--ink); }
+
+.request-form { display: grid; gap: 17px; }
+
+.form-field {
+  display: grid;
+  gap: 7px;
+  font-size: .92rem;
+  font-weight: 700;
+}
+
+.form-field > span span,
+.risk-field legend span { color: #dc2626; }
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 400;
+}
+
+.form-field textarea { min-height: 92px; resize: vertical; }
+.form-field input[type="file"] { padding: 8px; }
+
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible,
+.request-dialog button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.form-field small,
+.privacy-note {
+  color: var(--muted);
+  font-size: .8rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.location-button {
+  justify-self: start;
+  padding: 9px 13px;
+  border: 1px solid rgb(52 152 219 / 30%);
+  border-radius: 10px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  cursor: pointer;
+  font: inherit;
+  font-size: .88rem;
+  font-weight: 700;
+}
+
+.form-feedback { min-height: 0; margin: -10px 0 0; color: var(--muted); font-size: .86rem; }
+.form-feedback:empty { display: none; }
+.form-feedback[data-state="error"] { color: #b91c1c; }
+.form-feedback[data-state="success"] { color: #047857; }
+
+.risk-field {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  margin: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.risk-field legend { padding: 0 5px; font-size: .92rem; font-weight: 700; }
+.risk-field label { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); }
+.risk-field input { accent-color: var(--accent); }
+
+.contact-fields { display: grid; grid-template-columns: minmax(0, 1fr) 120px; gap: 14px; }
+.privacy-note { margin-top: -12px; }
+
+.request-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 5px;
+}
+
+.request-actions button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 11px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.request-cancel {
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--muted);
+}
+
+.request-submit {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--white);
+}
+
+@media (max-width: 480px) {
+  .request-dialog { padding: 21px 17px; }
+  .request-actions { flex-direction: column-reverse; }
+  .request-actions button { width: 100%; }
+}
