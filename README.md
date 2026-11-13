@@ -11,19 +11,21 @@ A aplicação foi consolidada em uma arquitetura Single-Page / Landing Page com 
 ## Estrutura de Arquivos
 
 SmartCidadão/
-├── imagens/             # Diretório contendo as fotografias dos problemas urbanos
+├── css/
+│   └── styles.css       # Estilos, animações 3D e responsividade
+├── imagens/             # Fotografias dos problemas urbanos
 │   ├── buraco.jpg
 │   ├── buraco2.jpg
-│   ├── arvore-caida.jpeg
+│   ├── arvore-caida-na-via.jpeg
 │   ├── enchentes2.jpg
 │   ├── fiossoltos.jpg
-│   ├── Lixo, no centro.jpg
+│   ├── lixo-acumulado-no-centro.jpg
 │   ├── moradores-de-rua.jpg
 │   └── poda de arvore.jpg
-├── index.html           # Estrutura semântica completa da Landing Page
-├── styles.css           # Folha de estilos, variáveis CSS, animações 3D e responsividade
-├── script.js            # Lógica de renderização dinâmica do carrossel 3D
-└── README.md            # Documentação técnica detalhada do projeto
+├── js/
+│   └── script.js        # Lógica do carrossel e interações
+├── index.html           # Estrutura semântica da Landing Page
+└── README.md            # Documentação do projeto
 
 
 
@@ -75,9 +77,9 @@ Dois blocos fixos nas margens esquerda e direita (.esquerda e .direita) com 4 í
 
 Carregamento de Scripts:
 
-Importação do script.js com o atributo defer, garantindo que o DOM esteja completamente carregado antes da execução do JavaScript.
+Importação de js/script.js com o atributo defer, garantindo que o DOM esteja carregado antes da execução do JavaScript.
 
-## 2. styles.css (Estilização, Layout & Animações)
+## 2. css/styles.css (Estilização, Layout & Animações)
 
 A folha de estilos utiliza recursos modernos de CSS3 sem dependência de frameworks externos:
 
@@ -127,7 +129,7 @@ Media Queries (@media): Breakpoints em 1024px, 760px e 420px adaptam grids para 
 
 Preferência de Movimento Reduzido: Bloco @media (prefers-reduced-motion: reduce) desativa automaticamente a rotação do carrossel e transições para usuários com sensibilidade a movimento.
 
-## 3. script.js (Interatividade & Manipulação do DOM)
+## 3. js/script.js (Interatividade & Manipulação do DOM)
 
 O arquivo JavaScript gerencia a geração dinâmica da galeria 3D:
 

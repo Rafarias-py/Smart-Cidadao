@@ -8,7 +8,7 @@
         alt: "Outro buraco em via urbana"
       },
       {
-        src: "imagens/arvore-caida.jpeg",
+        src: "imagens/arvore-caida-na-via.jpeg",
         alt: "Árvore caída em área urbana"
       },
       {
@@ -20,7 +20,7 @@
         alt: "Fios soltos em área urbana"
       },
       {
-        src: "imagens/Lixo, no centro.jpg",
+        src: "imagens/lixo-acumulado-no-centro.jpg",
         alt: "Lixo acumulado no centro da cidade"
       },
       {

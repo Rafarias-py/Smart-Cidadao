@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SmartCidadão</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -294,10 +294,10 @@
           <h2 id="footer-map-title">Mapa do site</h2>
           <ul>
             <li><a href="index.html#problema">O Problema</a></li>
-            <li><a href="tecnologia.html">Nossa Tecnologia</a></li>
-            <li><a href="objetivos.html">Objetivos</a></li>
-            <li><a href="publico.html">Público-alvo</a></li>
-            <li><a href="beneficios.html">Benefícios</a></li>
+            <li><a href="index.html#tecnologia">Nossa Tecnologia</a></li>
+            <li><a href="index.html#objetivos">Objetivos</a></li>
+            <li><a href="index.html#publico">Público-alvo</a></li>
+            <li><a href="index.html#beneficios">Benefícios</a></li>
           </ul>
         </section>
 
@@ -326,29 +326,7 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
-
-  <script>
-    document.querySelector('.caixa-busca')?.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const termo = document.getElementById('input-busca').value.toLowerCase().trim();
-
-      if (termo.includes('problema') || termo.includes('inicio') || termo.includes('início')) {
-        window.location.href = 'index.html';
-      } else if (termo.includes('tecnologia')) {
-        window.location.href = 'tecnologia.html';
-      } else if (termo.includes('objetivo')) {
-        window.location.href = 'objetivos.html';
-      } else if (termo.includes('público') || termo.includes('publico')) {
-        window.location.href = 'publico.html';
-      } else if (termo.includes('benefício') || termo.includes('beneficio')) {
-        window.location.href = 'beneficios.html';
-      } else {
-        alert('Página não encontrada. Tente buscar por: Problema, Tecnologia, Objetivos, Público-alvo ou Benefícios.');
-      }
-    });
-  </script>
-
+  <script src="js/script.js" defer></script>
 
   <!-- Elementos de fundo urbano para as laterais -->
   <div class="fundo-urbano-lateral esquerda" aria-hidden="true">
