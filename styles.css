@@ -558,3 +558,54 @@ a:focus-visible {
     display: none;
   }
 }
+
+/* Garante que o container interno use flexbox distribuído em 3 colunas */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+  gap: 20px;
+}
+
+/* Faz a logo e o bloco da direita ocuparem o mesmo espaço de largura, centralizando o nav */
+.brand {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-action {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 26px);
+  justify-content: center;
+}
+
+/* Estilo do botão "Faça sua Solicitação" baseado no seu print */
+.btn-solicitacao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border: 2px solid #ffffff;
+  border-radius: 12px;
+  background: transparent;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-solicitacao:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
