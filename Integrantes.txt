@@ -1,0 +1,18 @@
+Integrantes do grupo
+
+1. Felipe Souza Dantas
+   RM: 575811
+
+2. Gabriel Morone Araújo Leite
+   RM: 575867
+
+3. Gustavo Batista De Oliveira Santos
+   RM: 576911
+
+4. Mateus Santana Dos Santos Figueredo
+   RM: 575123
+
+5. Rafael Farias Feitosa
+   RM: 576487
+
+Link do repositório: https://github.com/Rafarias-py/Smart-Cidadao.git

@@ -2,17 +2,36 @@
 
 O SmartCidadão é uma Landing Page institucional e interativa projetada para conectar cidadãos e gestão pública, simplificando o relato de problemas urbanos (como buracos nas vias, falhas na iluminação, alagamentos e descarte irregular de lixo) e demonstrando como a tecnologia otimiza o direcionamento das equipes de manutenção das prefeituras.
 
+- **Site publicado:** https://smart-cidadao.vercel.app/
+- **Repositório:** https://github.com/Rafarias-py/Smart-Cidadao
+
+## Equipe
+
+<!-- Preencher com os dados reais. Os mesmos dados devem constar no equipe.txt. -->
+
+| Integrante | RM |
+|---|---|
+| Rafael Farias Feitosa | [RM] |
+| [Nome do integrante] | [RM] |
+
+Os nomes, os RMs e o link do repositório também estão no arquivo `equipe.txt`.
+
 ## Visão Geral do Projeto
 
 Muitos problemas cotidianos nas cidades demoram semanas para serem resolvidos devido a canais burocráticos e triagens manuais. O SmartCidadão apresenta uma proposta de sistema ágil onde a população registra ocorrências de forma simples e um algoritmo inteligente organiza uma fila de priorização automática com base no volume e na gravidade dos chamados.
 
-A aplicação foi consolidada em uma arquitetura Single-Page / Landing Page com navegação por âncoras suaves, recursos visuais em 3D, elementos multimídia incorporados e design totalmente responsivo.
+A aplicação foi consolidada em uma arquitetura Single-Page / Landing Page com navegação por âncoras suaves, recursos visuais em 3D, elementos multimídia incorporados, formulário de solicitação e design totalmente responsivo.
+
+O projeto foi desenvolvido sem frameworks, utilizando apenas HTML, CSS e JavaScript puro, com a fonte Inter carregada pelo Google Fonts.
+
+> **Atenção:** o formulário de solicitação é uma demonstração. As informações são validadas no navegador, mas não são enviadas nem armazenadas.
 
 ## Estrutura de Arquivos
 
+```
 SmartCidadão/
 ├── css/
-│   └── styles.css       # Estilos, animações 3D e responsividade
+│   └── styles.css       # Estilos, variáveis, animações 3D e responsividade
 ├── imagens/             # Fotografias dos problemas urbanos
 │   ├── buraco.jpg
 │   ├── buraco2.jpg
@@ -23,11 +42,12 @@ SmartCidadão/
 │   ├── moradores-de-rua.jpg
 │   └── poda de arvore.jpg
 ├── js/
-│   └── script.js        # Lógica do carrossel e interações
+│   └── script.js        # Lógica do carrossel, do formulário e da validação
 ├── index.html           # Estrutura semântica da Landing Page
+├── equipe.txt           # Integrantes, RMs e link do repositório
+├── AI.md                # Declaração de uso de inteligência artificial
 └── README.md            # Documentação do projeto
-
-
+```
 
 ## Análise Técnica Detalhada por Arquivo
 
@@ -37,110 +57,141 @@ Abaixo está o detalhamento completo de tudo o que foi utilizado na construção
 
 O arquivo HTML foi construído utilizando HTML5 Semântico e boas práticas de Acessibilidade Web (WAI-ARIA):
 
-Metadados e Configuração Inicial (<head>):
+**Metadados e Configuração Inicial (`<head>`):**
 
-Declaração <!doctype html> e atributo lang="pt-BR" para leitura correta por motores de busca e leitores de tela.
+- Declaração `<!doctype html>` e atributo `lang="pt-BR"` para leitura correta por motores de busca e leitores de tela.
+- `<meta charset="UTF-8">` e `<meta name="viewport" content="width=device-width, initial-scale=1.0">` para suporte a acentuação e adaptação a dispositivos móveis.
+- **Google Fonts:** `preconnect` para `fonts.googleapis.com` e `fonts.gstatic.com`, seguido do `<link>` da fonte Inter (pesos de 400 a 800), carregado antes da folha de estilos `css/styles.css`.
 
-<meta charset="UTF-8"> e <meta name="viewport" content="width=device-width, initial-scale=1.0"> para suporte a acentuação e adaptação a dispositivos móveis.
+**Cabeçalho Fixo (`<header class="site-header">`):**
 
-Cabeçalho Fixo (<header class="site-header">):
+- **Identidade Visual (`.brand`):** logotipo com ícone vetorial inline (`<svg>`) representando um escudo com sinal de verificação.
+- **Navegação Principal (`<nav class="main-nav">`):** links de ancoragem interna (`#problema`, `#tecnologia`, `#objetivos`, `#publico`, `#beneficios`) com `aria-label="Navegação principal"`.
+- **Ação Principal (`.header-action`):** botão de destaque (Faça sua Solicitação) posicionado à direita, que abre o formulário de solicitação.
 
-Identidade Visual (.brand): Logotipo com ícone vetorial inline (<svg>) representando um escudo com sinal de verificação.
+**Conteúdo Principal:**
 
-Navegação Principal (<nav class="main-nav">): Links de ancoragem interna (#problema, #tecnologia, #objetivos, #publico, #beneficios) com aria-label="Navegação principal".
+- **Seção 1 — O Problema:**
+  - Introdução textual com hierarquia de títulos (`h1` com destaque em `<span>`) e subtítulo categorizador (`.eyebrow`).
+  - Container do Carrossel (`<div class="carousel-scene">`): região demarcada com `role="region"` e `aria-label`, contendo a trilha `#carousel-track` populada via JavaScript.
+  - Seção de Vídeo (`<section class="video-section">`): incorporação responsiva (`<iframe>`) de reportagem do YouTube com `title` e carregamento otimizado (`loading="lazy"`).
+- **Seções 2 a 5 — Conteúdo Institucional (`#tecnologia`, `#objetivos`, `#publico`, `#beneficios`):**
+  - Estruturadas em duas colunas com Flexbox (`.section-layout`), alternando fundos claros e suaves (`.content-section` e `.content-section.soft`).
+  - Cada seção conta com um cartão de ícone vetorial exclusivo (`.section-icon`) criado diretamente com primitivas `<svg>` (`<rect>`, `<circle>`, `<path>`), ocultos para leitores de tela via `aria-hidden="true"` para evitar redundância.
 
-Ação Principal (.header-action): Botão de destaque (Faça sua Solicitação) posicionado à direita para conversão direta.
+**Formulário de Solicitação (`<dialog class="request-dialog">`):**
 
-Conteúdo Principal:
+- Janela modal nativa do HTML, com `aria-labelledby` e `aria-describedby`, aberta pelo botão do cabeçalho.
+- Aviso de que o formulário é uma demonstração e não envia dados.
+- Campos, todos obrigatórios:
 
-Seção 1 — O Problema:
+| Campo | Tipo | Regras |
+|---|---|---|
+| Tipo do problema | `<select>` | 11 categorias (buraco, bueiro, iluminação, lixo, poda, calçada, sinalização, semáforo, alagamento, mato alto e outro) |
+| Descrição curta | `<textarea>` | Até 240 caracteres |
+| Endereço do chamado | `<input type="text">` | Rua e número |
+| Fotos do problema | `<input type="file">` | Imagens, de 1 a 4 arquivos |
+| Risco imediato de acidente | `<input type="radio">` em `<fieldset>` | Sim ou Não |
+| Nome | `<input type="text">` | Até 100 caracteres |
+| Idade | `<input type="number">` | De 1 a 120 |
 
-Introdução textual com hierarquia de títulos ("h1" com destaque em <span>) e subtítulo categorizador (.eyebrow).
+- Parágrafo de retorno (`#request-feedback`) com `role="status"` e `aria-live="polite"` para informar o resultado da validação.
 
-Container do Carrossel (<div class="carousel-scene">): Região demarcada com role="region" e aria-label, contendo a trilha #carousel-track populada via JavaScript.
+**Rodapé (`<footer class="site-footer">`):**
 
-Seção de Vídeo (<section class="video-section">): Incorporação responsiva (<iframe>) de reportagem do YouTube com carregamento otimizado (loading="lazy").
+- Dividido em três áreas: resumo institucional com ícones de redes sociais em SVG (Instagram, LinkedIn, X, YouTube), mapa do site com links de navegação, informações de plataforma/endereço (Av. Paulista, 1106) e barra inferior de direitos autorais e itens legais.
 
-Seções 2 a 5 — Conteúdo Institucional (#tecnologia, #objetivos, #publico, #beneficios):
+**Elementos Decorativos Laterais (`.fundo-urbano-lateral`):**
 
-Estruturadas em grid de duas colunas (.section-layout), alternando fundos claros e suaves (.content-section e .content-section.soft).
+- Dois blocos fixos nas margens esquerda e direita (`.esquerda` e `.direita`) com 4 ícones vetoriais temáticos (prédios, pino de localização, rede conectada e lâmpada urbana) que preenchem o espaço lateral em telas grandes sem interferir na leitura.
 
-Cada seção conta com um cartão de ícone vetorial exclusivo (.section-icon) criado diretamente com primitivas <svg> (<rect>, <circle>, <path>), ocultos para leitores de tela via aria-hidden="true" para evitar redundância.
+**Carregamento de Scripts:**
 
-Rodapé (<footer class="site-footer">):
-
-Dividido em três áreas: resumo institucional com ícones de redes sociais em SVG (Instagram, LinkedIn, X, YouTube), mapa do site com links de navegação, informações de plataforma/endereço (Av. Paulista, 1106) e barra inferior de direitos autorais e links legais.
-
-Elementos Decorativos Laterais (.fundo-urbano-lateral):
-
-Dois blocos fixos nas margens esquerda e direita (.esquerda e .direita) com 4 ícones vetoriais temáticos (prédios, pino de localização, rede conectada e lâmpada urbana) que preenchem o espaço lateral em telas grandes sem interferir na leitura.
-
-Carregamento de Scripts:
-
-Importação de js/script.js com o atributo defer, garantindo que o DOM esteja carregado antes da execução do JavaScript.
+- Importação de `js/script.js` com o atributo `defer`, garantindo que o DOM esteja carregado antes da execução do JavaScript.
 
 ## 2. css/styles.css (Estilização, Layout & Animações)
 
 A folha de estilos utiliza recursos modernos de CSS3 sem dependência de frameworks externos:
 
-Design Tokens (:root):
+**Variáveis CSS (`:root`):**
 
-Centralização de paleta de cores (--ink, --muted, --primary: #3498db, --primary-soft, --accent: #10b981, --line, --white), sombras (--shadow), arredondamentos (--radius), tipografia (Inter, system-ui, sans-serif) e rolagem suave nativa (scroll-behavior: smooth).
+- Centralização da paleta de cores (`--ink`, `--muted`, `--primary: #3498db`, `--primary-soft`, `--accent: #10b981`, `--line`, `--white`), sombras (`--shadow`), arredondamentos (`--radius`) e rolagem suave nativa (`scroll-behavior: smooth`).
+- Tipografia: fonte Inter (carregada pelo Google Fonts), com `system-ui` e `sans-serif` como reserva.
 
-Reset e Contenção:
+**Reset e Contenção:**
 
-Uso global de * { box-sizing: border-box; } e classe utilitária .container utilizando width: min(1280px, calc(100% - 48px)) e margin-inline: auto para centralização fluida.
+- Uso global de `* { box-sizing: border-box; }` e classe utilitária `.container` utilizando `width: min(1280px, calc(100% - 48px))` e `margin-inline: auto` para centralização fluida.
 
-Cabeçalho Sticky e Layout de 3 Colunas:
+**Cabeçalho Sticky e Layout de 3 Colunas (Flexbox):**
 
-.site-header utiliza position: sticky; top: 0; z-index: 5; com efeito de vidro fosco (backdrop-filter: blur(14px)).
+- `.site-header` utiliza `position: sticky; top: 0; z-index: 5;` com efeito de vidro fosco (`backdrop-filter: blur(14px)`).
+- `.header-inner` distribui a logo (`.brand` com `flex: 1`), o menu centralizado (`.main-nav`) e o botão direito (`.header-action` com `flex: 1; justify-content: flex-end;`), mantendo simetria visual.
+- Compensação de ancoragem nas seções com `main section { scroll-margin-top: 92px; }` para que o cabeçalho fixo não cubra os títulos ao clicar nos links.
 
-.header-inner distribui a logo (.brand com flex: 1), o menu centralizado (.main-nav) e o botão direito (.header-action com flex: 1; justify-content: flex-end;) mantendo simetria visual.
+**Fundo com Gradientes Radiais:**
 
-Compensação de ancoragem nas seções com main section { scroll-margin-top: 92px; } para que o cabeçalho fixo não cubra os títulos ao clicar nos links.
+- `.problem-section` combina dois `radial-gradient` sutis nas cores verde e azul sobre o fundo branco para criar profundidade visual.
 
-Fundo com Gradientes Radiais:
+**Motor do Carrossel 3D:**
 
-.problem-section combina dois radial-gradient sutis nas cores verde e azul sobre o fundo branco para criar profundidade visual.
+- `.carousel-scene` define a profundidade de campo com `perspective: 1200px` e calcula o raio dinamicamente via variável `--carousel-radius: clamp(112px, 30vw, 380px)`.
+- `.carousel` ativa o espaço tridimensional com `transform-style: preserve-3d` e executa a rotação contínua (`@keyframes rotate-carousel`) durante 32s em loop infinito.
+- `.carousel-image` posiciona cada foto no espaço 3D usando a variável injetada pelo JS (`rotateY(var(--angle)) translateZ(var(--carousel-radius))`), oculta o verso com `backface-visibility: hidden` e adiciona reflexo inferior sutil com `-webkit-box-reflect`.
 
-Motor do Carrossel 3D:
+**Flexbox e Seções de Conteúdo:**
 
-.carousel-scene define a profundidade de campo com perspective: 1200px e calcula o raio dinamicamente via variável --carousel-radius: clamp(112px, 30vw, 380px).
+- `.section-layout` utiliza Flexbox (`display: flex`) para alinhar os cartões de ícones aos textos, com `flex: 1` na coluna de texto.
+- `.video-frame` utiliza `aspect-ratio: 16 / 9` para manter a proporção exata do vídeo em qualquer largura de tela.
+- `.footer-main` utiliza Flexbox com `flex-wrap: wrap` e `flex: 1 1 220px` em cada coluna, que quebram para baixo em telas pequenas.
+- O `display: grid` é usado apenas em componentes pequenos, como a centralização de ícones, a lista do rodapé e o empilhamento dos campos do formulário.
 
-.carousel ativa o espaço tridimensional com transform-style: preserve-3d e executa a rotação contínua (@keyframes rotate-carousel) durante 32s em loop infinito.
+**Formulário de Solicitação:**
 
-.carousel-image posiciona cada foto no espaço 3D usando a variável injetada pelo JS (rotateY(var(--angle)) translateZ(var(--carousel-radius))), oculta o verso com backface-visibility: hidden e adiciona reflexo inferior sutil com -webkit-box-reflect.
+- `.request-dialog` define a largura máxima, o arredondamento (`--radius`) e a sombra da janela, e `::backdrop` aplica fundo escuro com desfoque.
+- Campos com borda, arredondamento e estados `:focus-visible` com contorno na cor de destaque.
+- Mensagens de retorno coloridas por estado: `data-state="error"` e `data-state="success"`.
 
-Grids e Seções de Conteúdo:
+**Elementos Laterais Decorativos:**
 
-.section-layout utiliza CSS Grid (grid-template-columns: 170px minmax(0, 1fr)) para alinhar os cartões de ícones aos textos.
+- `.fundo-urbano-lateral` utiliza `position: fixed`, `opacity: 0.12` e `pointer-events: none` (para não bloquear cliques), sendo ocultado automaticamente em telas menores que 1024px.
 
-.video-frame utiliza aspect-ratio: 16 / 9 para manter a proporção exata do vídeo em qualquer largura de tela.
+**Responsividade e Acessibilidade de Movimento:**
 
-.footer-main utiliza Grid de 3 colunas proporcionais (1.2fr .7fr 1fr).
-
-Elementos Laterais Decorativos:
-
-.fundo-urbano-lateral utiliza position: fixed, opacity: 0.12 e pointer-events: none (para não bloquear cliques), sendo ocultado automaticamente em telas menores que 1024px.
-
-Responsividade e Acessibilidade de Movimento:
-
-Media Queries (@media): Breakpoints em 1024px, 760px e 420px adaptam grids para coluna única, ajustam tipografia fluida com clamp() e redimensionam o raio do carrossel 3D para smartphones.
-
-Preferência de Movimento Reduzido: Bloco @media (prefers-reduced-motion: reduce) desativa automaticamente a rotação do carrossel e transições para usuários com sensibilidade a movimento.
+- **Media Queries (`@media`):** breakpoints em 1024px, 760px, 480px e 420px adaptam as colunas para layout vertical, ajustam a tipografia fluida com `clamp()` e redimensionam o raio do carrossel 3D para smartphones.
+- **Preferência de Movimento Reduzido:** bloco `@media (prefers-reduced-motion: reduce)` desativa automaticamente a rotação do carrossel e as transições para usuários com sensibilidade a movimento.
 
 ## 3. js/script.js (Interatividade & Manipulação do DOM)
 
-O arquivo JavaScript gerencia a geração dinâmica da galeria 3D:
+O arquivo JavaScript gerencia a geração dinâmica da galeria 3D e o formulário de solicitação:
 
-Estrutura de Dados (slides):
+**Estrutura de Dados (`slides`):**
 
-Array de objetos contendo 8 registros de problemas urbanos, cada um mapeando o caminho da imagem (src) na pasta imagens/ e sua descrição acessível (alt).
+- Array de objetos contendo 8 registros de problemas urbanos, cada um mapeando o caminho da imagem (`src`) na pasta `imagens/` e sua descrição acessível (`alt`).
 
-Renderização Dinâmica:
+**Renderização Dinâmica:**
 
-Seleciona o elemento #carousel-track via document.querySelector.
+- Seleciona o elemento `#carousel-track` via `document.querySelector`.
+- Itera sobre o array `slides` utilizando `.forEach((slide, index) => ...)`, criando elementos `<img>` nativos (`document.createElement("img")`).
+- Distribui cada imagem igualmente ao redor do círculo 3D, injetando a posição diretamente na variável CSS `--angle` via `image.style.setProperty("--angle", ...)` e anexando cada imagem ao carrossel com `carousel.append(image)`.
 
-Itera sobre o array slides utilizando .forEach((slide, index) => ...), criando elementos <img> nativos (document.createElement("img")).
+**Formulário de Solicitação:**
 
-Distribui cada imagem igualmente ao redor do círculo 3D, injetando a posição diretamente na variável CSS --angle via image.style.setProperty("--angle", ...) e anexando cada imagem ao carrossel com carousel.append(image).
+- Abre a janela modal com `showModal()` ao clicar no botão do cabeçalho e a fecha com `close()` pelos botões "Cancelar" e "×".
+- No envio, usa `event.preventDefault()` e confere os campos de texto e a descrição com `trim()`, bloqueando valores vazios ou formados apenas por espaços.
+- Valida a quantidade de fotos: mínimo de 1 e máximo de 4, usando `setCustomValidity`.
+- Usa `reportValidity()` para exibir as mensagens de erro e escreve o resultado no parágrafo `#request-feedback` por meio de `textContent` e do atributo `dataset.state`.
+- Os dados não são enviados para nenhum serviço.
+
+## Como Executar
+
+Não há dependências nem etapa de build. Basta clonar o repositório e abrir o arquivo `index.html` em um navegador, ou acessar o site publicado pelo link no início deste documento. A fonte Inter depende de conexão com a internet; sem ela, o navegador usa uma fonte do sistema.
+
+## Versionamento
+
+- Branch principal: `main`.
+- <!-- Manter esta linha só se for verdade quando entregarem: -->As novas funcionalidades são desenvolvidas em branches próprias e mescladas na `main` por Pull Request.
+- Todos os integrantes participam por meio de commits no repositório.
+
+## Uso de Inteligência Artificial
+
+O uso de ferramentas de inteligência artificial neste projeto está declarado no arquivo [`AI.md`](AI.md).
