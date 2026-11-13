@@ -241,16 +241,18 @@ a:focus-visible {
 .content-section.soft { background: var(--primary-soft); }
 
 .section-layout {
-  display: grid;
-  grid-template-columns: 170px minmax(0, 1fr);
+  display: flex;
   align-items: center;
   gap: clamp(30px, 7vw, 88px);
   max-width: 930px;
   margin-inline: auto;
 }
 
+.section-layout > div:last-child { flex: 1; }
+
 .section-icon {
   display: grid;
+  flex: 0 0 132px;
   width: 132px;
   height: 132px;
   place-items: center;
@@ -305,11 +307,13 @@ a:focus-visible {
 }
 
 .footer-main {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(140px, .7fr) minmax(220px, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: clamp(32px, 6vw, 84px);
   padding-bottom: 48px;
 }
+
+.footer-main > * { flex: 1 1 220px; }
 
 .footer-logo {
   display: inline-flex;
@@ -416,11 +420,9 @@ a:focus-visible {
   .main-nav { gap: 13px; overflow-x: auto; }
   .main-nav a { font-size: .76rem; white-space: nowrap; }
   .problem-section { padding-top: 72px; }
-  .section-layout { grid-template-columns: 1fr; gap: 23px; }
-  .section-icon { width: 86px; height: 86px; border-radius: 25px; }
+  .section-layout { flex-direction: column; align-items: flex-start; gap: 23px; }
+  .section-icon { flex-basis: auto; width: 86px; height: 86px; border-radius: 25px; }
   .section-icon svg { width: 42px; height: 42px; }
-  .footer-main { grid-template-columns: 1fr 1fr; gap: 36px 28px; }
-  .footer-brand { grid-column: 1 / -1; }
   .footer-bottom { align-items: flex-start; flex-direction: column; }
 }
 
@@ -431,8 +433,6 @@ a:focus-visible {
   main section { scroll-margin-top: 112px; }
   .carousel-scene { --carousel-radius: clamp(105px, 30vw, 145px); }
   .carousel-image { width: clamp(130px, 38vw, 150px); border-radius: 13px; }
-  .footer-main { grid-template-columns: 1fr; gap: 30px; }
-  .footer-brand { grid-column: auto; }
   .footer-legal { flex-direction: column; gap: 9px; }
 }
 
@@ -591,7 +591,11 @@ a:focus-visible {
 
 .request-notice strong { color: var(--ink); }
 
-.request-form { display: grid; gap: 17px; }
+.request-form {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
 
 .form-field {
   display: grid;
@@ -668,7 +672,9 @@ a:focus-visible {
 .risk-field label { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); }
 .risk-field input { accent-color: var(--accent); }
 
-.contact-fields { display: grid; grid-template-columns: minmax(0, 1fr) 120px; gap: 14px; }
+.contact-fields { display: flex; gap: 14px; }
+.contact-fields > .form-field:first-child { flex: 1; }
+.contact-fields > .form-field:last-child { flex: 0 0 120px; }
 .privacy-note { margin-top: -12px; }
 
 .request-actions {
