@@ -1,6 +1,6 @@
 # SmartCidadão — Zeladoria Urbana Inteligente
 
-## Resumo do Projeto
+## A Ficha da CitizenTech
 
 - **Nome:** CitizenTech
 - **Cidade e bairro:** São Paulo
