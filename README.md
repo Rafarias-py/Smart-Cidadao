@@ -49,9 +49,9 @@ Navegação Principal (<nav class="main-nav">): Links de ancoragem interna (#pro
 
 Ação Principal (.header-action): Botão de destaque (Faça sua Solicitação) posicionado à direita para conversão direta.
 
-Conteúdo Principal (<main>):
+Conteúdo Principal:
 
-Seção 1 — O Problema (#problema):
+Seção 1 — O Problema:
 
 Introdução textual com hierarquia de títulos ("h1" com destaque em <span>) e subtítulo categorizador (.eyebrow).
 
