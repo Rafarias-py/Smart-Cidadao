@@ -1,30 +1,30 @@
-## SmartCidadão — Zeladoria Urbana Inteligente
+# SmartCidadão — Zeladoria Urbana Inteligente
 
-O SmartCidadão é uma Landing Page institucional e interativa projetada para conectar cidadãos e gestão pública, simplificando o relato de problemas urbanos (como buracos nas vias, falhas na iluminação, alagamentos e descarte irregular de lixo) e demonstrando como a tecnologia otimiza o direcionamento das equipes de manutenção das prefeituras.
+## Resumo do Projeto
 
-- **Site publicado:** https://smart-cidadao.vercel.app/
-- **Repositório:** https://github.com/Rafarias-py/Smart-Cidadao
+- **Nome:** CitizenTech
+- **Cidade e bairro:** São Paulo
+- **Cidadão beneficiado:** Moradores de São Paulo
+- **Problema:** Os problemas urbanos demoram a ser resolvidos porque o relato é burocrático e a triagem das ocorrências é feita manualmente.
+- **Indicador de impacto:** Tempo médio entre o registro de um chamado e a sua resolução, em dias.
+- **ODS conectados:** ODS 11 (Cidades e Comunidades Sustentáveis), ODS 9 (Indústria, Inovação e Infraestrutura) e ODS 16 (Paz, Justiça e Instituições Eficazes).
+
+### O que cada parte faz
+
+- **Landing page:** Apresenta o problema, a tecnologia, os objetivos, o público-alvo e os benefícios.
+- **Formulário de solicitação:** Permite informar o tipo do problema, a descrição, o endereço, de 1 a 4 fotos, se há risco de acidente, nome e idade. É uma demonstração: os dados não são enviados.
+- **Algoritmo de priorização:** Cruza o volume e a gravidade dos chamados para montar a fila de atendimento.
+- **Prefeitura (proposta):** Recebe os dados organizados para direcionar as equipes de manutenção.
+
+- **Links:** [Site publicado](https://smart-cidadao.vercel.app/) · [Repositório](https://github.com/Rafarias-py/Smart-Cidadao)
 
 ## Equipe
 
-<!-- Preencher com os dados reais. Os mesmos dados devem constar no equipe.txt. -->
+Os integrantes e seus RMs estão listados em [Integrantes.txt](Integrantes.txt).
 
-| Integrante | RM |
-|---|---|
-| Rafael Farias Feitosa | [RM] |
-| [Nome do integrante] | [RM] |
+## Implementação
 
-Os nomes, os RMs e o link do repositório também estão no arquivo `equipe.txt`.
-
-## Visão Geral do Projeto
-
-Muitos problemas cotidianos nas cidades demoram semanas para serem resolvidos devido a canais burocráticos e triagens manuais. O SmartCidadão apresenta uma proposta de sistema ágil onde a população registra ocorrências de forma simples e um algoritmo inteligente organiza uma fila de priorização automática com base no volume e na gravidade dos chamados.
-
-A aplicação foi consolidada em uma arquitetura Single-Page / Landing Page com navegação por âncoras suaves, recursos visuais em 3D, elementos multimídia incorporados, formulário de solicitação e design totalmente responsivo.
-
-O projeto foi desenvolvido sem frameworks, utilizando apenas HTML, CSS e JavaScript puro, com a fonte Inter carregada pelo Google Fonts.
-
-> **Atenção:** o formulário de solicitação é uma demonstração. As informações são validadas no navegador, mas não são enviadas nem armazenadas.
+Landing page responsiva desenvolvida em HTML, CSS e JavaScript, sem frameworks.
 
 ## Estrutura de Arquivos
 
@@ -44,7 +44,7 @@ SmartCidadão/
 ├── js/
 │   └── script.js        # Lógica do carrossel, do formulário e da validação
 ├── index.html           # Estrutura semântica da Landing Page
-├── equipe.txt           # Integrantes, RMs e link do repositório
+├── Integrantes.txt      # Integrantes e RMs
 ├── AI.md                # Declaração de uso de inteligência artificial
 └── README.md            # Documentação do projeto
 ```
@@ -82,7 +82,6 @@ O arquivo HTML foi construído utilizando HTML5 Semântico e boas práticas de A
 **Formulário de Solicitação (`<dialog class="request-dialog">`):**
 
 - Janela modal nativa do HTML, com `aria-labelledby` e `aria-describedby`, aberta pelo botão do cabeçalho.
-- Aviso de que o formulário é uma demonstração e não envia dados.
 - Campos, todos obrigatórios:
 
 | Campo | Tipo | Regras |
@@ -180,7 +179,6 @@ O arquivo JavaScript gerencia a geração dinâmica da galeria 3D e o formulári
 - No envio, usa `event.preventDefault()` e confere os campos de texto e a descrição com `trim()`, bloqueando valores vazios ou formados apenas por espaços.
 - Valida a quantidade de fotos: mínimo de 1 e máximo de 4, usando `setCustomValidity`.
 - Usa `reportValidity()` para exibir as mensagens de erro e escreve o resultado no parágrafo `#request-feedback` por meio de `textContent` e do atributo `dataset.state`.
-- Os dados não são enviados para nenhum serviço.
 
 ## Como Executar
 
