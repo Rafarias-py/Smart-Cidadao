@@ -197,50 +197,9 @@ h1 span { color: var(--accent); }
   to { transform: rotateY(360deg); }
 }
 
-.carousel-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 14px 5px 2px;
-}
-
-.carousel-controls button {
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 9px 14px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--white);
-  color: var(--ink);
-  cursor: pointer;
-  font: inherit;
-  font-size: .88rem;
-  font-weight: 700;
-  transition: border-color .2s ease, background .2s ease, transform .2s ease;
-}
-
-.carousel-controls button:hover {
-  transform: translateY(-1px);
-  border-color: var(--accent);
-  background: var(--primary-soft);
-}
-
-.carousel-controls button:focus-visible,
 a:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
-}
-
-.carousel-controls svg { width: 18px; height: 18px; }
-
-.slide-count {
-  color: var(--muted);
-  font-size: .85rem;
-  font-variant-numeric: tabular-nums;
 }
 
 /* ---------- Vídeo ---------- */
@@ -484,43 +443,6 @@ a:focus-visible {
   }
 
   .carousel { animation: none; }
-}
-
-/* Garante alinhamento dos itens no menu */
-.menu-navegacao {
-  display: flex;
-  align-items: center;
-  gap: 15px; /* Espaçamento entre os elementos */
-}
-
-/* Estilo do campo de pesquisa */
-
-.caixa-busca {
-  display: flex;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.2); /* Fundo sutil transparente */
-  border-radius: 20px;
-  padding: 4px 10px;
-}
-
-.caixa-busca input {
-  border: none;
-  background: transparent;
-  outline: none;
-  color: #ffffff;
-  font-size: 14px;
-  padding: 4px 8px;
-}
-
-.caixa-busca input::placeholder {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.caixa-busca button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #ffffff;
 }
 
 /* melhorando o fundo */

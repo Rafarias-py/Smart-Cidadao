@@ -68,30 +68,3 @@ requestForm?.addEventListener("submit", (event) => {
   requestFeedback.textContent = "Informações preenchidas e validadas. O envio ainda não está conectado a um serviço.";
   requestFeedback.dataset.state = "success";
 });
-
-// Deixando a barra de pesquisa funcional para rolar até a seção, quando presente.
-const searchForm = document.querySelector(".caixa-busca");
-
-searchForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const termo = document.getElementById("input-busca").value.toLowerCase().trim();
-  let secaoAlvo = null;
-
-  if (termo.includes("problema") || termo.includes("inicio") || termo.includes("início")) {
-    secaoAlvo = document.getElementById("problema");
-  } else if (termo.includes("tecnologia")) {
-    secaoAlvo = document.getElementById("tecnologia");
-  } else if (termo.includes("objetivo")) {
-    secaoAlvo = document.getElementById("objetivos");
-  } else if (termo.includes("público") || termo.includes("publico")) {
-    secaoAlvo = document.getElementById("publico");
-  } else if (termo.includes("benefício") || termo.includes("beneficio")) {
-    secaoAlvo = document.getElementById("beneficios");
-  }
-
-  if (secaoAlvo) {
-    secaoAlvo.scrollIntoView({ behavior: "smooth" });
-  } else {
-    alert("Seção não encontrada. Tente buscar por: Problema, Tecnologia, Objetivos, Público-alvo ou Benefícios.");
-  }
-});
